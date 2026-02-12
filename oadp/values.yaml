@@ -34,5 +34,5 @@ useCatalogSnapshot: false
 catalogSource:
   name: redhat-operators-snapshot-oadp
   namespace: openshift-adp
-  image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+  image: quay.io/rhpds/olm_snapshot_redhat_catalog
   tag: v4.16_2024_08_19

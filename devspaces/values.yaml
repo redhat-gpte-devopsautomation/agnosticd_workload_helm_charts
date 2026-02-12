@@ -22,5 +22,5 @@ useCatalogSnapshot: false
 catalogSource:
   name: redhat-operators-snapshot-rhdevspaces
   namespace: openshift-operators
-  image: quay.io/gpte-devops-automation/olm_snapshot_redhat_catalog
+  image: quay.io/rhpds/olm_snapshot_redhat_catalog
   tag: v4.14_2023_12_18
