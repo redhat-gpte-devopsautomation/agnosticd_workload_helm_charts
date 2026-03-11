@@ -9,7 +9,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   kai_solution_server_enabled: {{ .Values.tackleInstance.kaiSolutionServerEnabled }}
-{{- if .Values.kaiSolutionServerEnabled -}}
+{{- if .Values.tackleInstance.kaiSolutionServerEnabled -}}
   kai_llm_provider: {{ .Values.tackleInstance.kaiLlmProvider }}
   kai_llm_model: {{ .Values.tackleInstance.kaiLlmModel }}
 {{- end -}}
