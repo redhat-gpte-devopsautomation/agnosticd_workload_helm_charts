@@ -34,6 +34,9 @@ tackleUIServiceName: mta-ui
 # the storage class variables to proper values
 # (e.g. gp3-csi)
 tackleInstance:
+  kaiSolutionServerEnabled: false
+  kaiLlmProvider: openai
+  kaiLlmModel: llama-scout-17b
   featureAuthRequired: false
   hubBucketVolumeSize: 10Gi
   hubDatabaseVolumeSize: 5Gi
