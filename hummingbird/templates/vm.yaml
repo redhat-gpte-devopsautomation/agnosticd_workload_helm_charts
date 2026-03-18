@@ -1,0 +1,62 @@
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: {{ .Values.vm.name }}
+  labels:
+    {{- include "hummingbird.labels" . | nindent 4 }}
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      name: {{ .Values.vm.name }}-volume
+    spec:
+      sourceRef:
+        kind: DataSource
+        name: {{ .Values.vm.datasourcename }}
+        namespace: {{ .Values.vm.datasourcenamespace }}
+      storage:
+        resources:
+          requests:
+            storage: {{ .Values.vm.disksize }}
+  instancetype:
+    kind: virtualmachineclusterinstancetype
+    name: {{ .Values.vm.instancetype }}
+  preference:
+    kind: virtualmachineclusterpreference
+    name: rhel.10
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        network.kubevirt.io/headlessService: headless
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          disks:
+          - bootOrder: 1
+            name: rootdisk
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+        machine:
+          type: pc-q35-rhel9.6.0
+        resources: {}
+      subdomain: headless
+      volumes:
+      - name: rootdisk
+        dataVolume:
+          name: {{ .Values.vm.name }}-volume
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            chpasswd:
+              expire: false
+            password: {{ .Values.vm.password }}
+            user: {{ .Values.vm.username }}
+            runcmd:
+              - curl -sL -o /tmp/init.sh https://raw.githubusercontent.com/rhpds/zero-cve-hummingbird-showroom/refs/heads/main/scripts/init-vm.sh
+              - chmod +x /tmp/init.sh
+              - /tmp/init.sh
+        

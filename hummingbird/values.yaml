@@ -1,0 +1,20 @@
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+namespacePermissions:
+  # Which OpenShift user gets permissions for the namespace
+  user: user0
+  # Which role to grant the user on the namespace
+  role: admin
+
+vm:
+  datasourcename: rhel10
+  datasourcenamespace: openshift-virtualization-os-images
+  name: rhel-user0
+  username: rhel
+  password: password
+  disksize: 30Gi
+  instancetype: u1.medium
