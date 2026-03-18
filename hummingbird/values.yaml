@@ -11,9 +11,9 @@ namespacePermissions:
   role: admin
 
 vm:
+  name: rhel-user0
   datasourcename: rhel10
   datasourcenamespace: openshift-virtualization-os-images
-  name: rhel-user0
   username: rhel
   password: password
   disksize: 30Gi
