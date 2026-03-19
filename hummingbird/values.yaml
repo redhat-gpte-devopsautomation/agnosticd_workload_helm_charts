@@ -18,3 +18,17 @@ vm:
   password: password
   disksize: 30Gi
   instancetype: u1.medium
+
+datavolume:
+  name: hummingbird
+  namespace: openshift-virtualization-os-images
+  source: http://url_to_qcow2_image.qcow2
+  storageClassName: ocs-external-storagecluster-ceph-rbd-immediate
+  disksize: 30Gi
+
+datasource:
+  name: hummingbird
+  namespace: openshift-virtualization-os-images
+  source:
+    name: hummingbird-image
+    namespace: openshift-virtualization-os-images
