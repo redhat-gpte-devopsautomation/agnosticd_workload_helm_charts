@@ -18,6 +18,9 @@ vm:
   password: password
   disksize: 30Gi
   instancetype: u1.medium
+  ssh_pwauth: true
+  init_script: ""
+  # init_script: https://raw.githubusercontent.com/rhpds/zero-cve-hummingbird-showroom/refs/heads/main/scripts/init-vm.sh
 
 datavolume:
   name: hummingbird
