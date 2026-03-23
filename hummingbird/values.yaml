@@ -20,8 +20,8 @@ vm:
   instancetype: u1.medium
   ssh_pwauth: true
   # Set to empty string to disable
-  # init_script: ""
-  init_script: https://raw.githubusercontent.com/rhpds/zero-cve-hummingbird-showroom/refs/heads/main/scripts/init-vm.sh
+  init_script_url: ""
+  # init_script_url: https://raw.githubusercontent.com/rhpds/zero-cve-hummingbird-showroom/refs/heads/main/scripts/init-vm.sh
 
 datavolume:
   name: hummingbird

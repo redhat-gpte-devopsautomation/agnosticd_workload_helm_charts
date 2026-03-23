@@ -56,9 +56,9 @@ spec:
             ssh_pwauth: {{ .Values.vm.ssh_pwauth }}
             password: {{ .Values.vm.password }}
             user: {{ .Values.vm.username }}
-            {{- if .Values.vm.init_script }}
+            {{- if .Values.vm.init_script_url }}
             runcmd:
-              - curl -sL -o /tmp/init.sh {{ .Values.vm.init_script }}
+              - curl -sL -o /tmp/init.sh {{ .Values.vm.init_script_url }}
               - chmod +x /tmp/init.sh
               - /tmp/init.sh
             {{- end }}
