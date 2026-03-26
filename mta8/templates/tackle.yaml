@@ -8,6 +8,11 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
+  kai_solution_server_enabled: {{ .Values.tackleInstance.kaiSolutionServerEnabled }}
+{{- if .Values.tackleInstance.kaiSolutionServerEnabled }}
+  kai_llm_provider: {{ .Values.tackleInstance.kaiLlmProvider }}
+  kai_llm_model: {{ .Values.tackleInstance.kaiLlmModel }}
+{{- end }}
   feature_auth_required: {{ .Values.tackleInstance.featureAuthRequired }}
   hub_bucket_volume_size: {{ .Values.tackleInstance.hubBucketVolumeSize }}
   hub_database_volume_size: {{ .Values.tackleInstance.hubDatabaseVolumeSize }}
